@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Works | Maitrik Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .glass {
+            backdrop-filter: blur(6px);
+            background: rgba(255, 255, 255, 0.06);
+        }
+    </style>
+</head>
+
+<body class="bg-black">
+    <!-- Navbar -->
+    <header class="fixed w-full top-0 z-50 flex justify-center mt-10">
+        <nav class="backdrop-blur-xl bg-white/5 border border-white/10 
+                px-5 py-2 rounded-2xl flex items-center gap-8 shadow-lg">
+
+            <!-- Home (Active) -->
+            <a href="index.html"
+                class="flex items-center gap-2 px-4 py-3 rounded-xl bg-black text-white font-medium transition">
+                <i class="ph-house-simple-bold text-lg"></i>
+                Home
+            </a>
+
+            <!-- About -->
+            <a href="about.html" class="flex items-center gap-2 text-gray-400 hover:text-white transition">
+                <i class="ph-user-bold text-lg"></i>
+                About
+            </a>
+
+            <!-- Works -->
+            <a href="works.html" class="flex items-center gap-2 text-gray-400 hover:text-white transition">
+                <i class="ph-briefcase-bold text-lg"></i>
+                Works
+            </a>
+
+            <!-- Contact -->
+            <a href="#contact" class="flex items-center gap-2 text-gray-400 hover:text-white transition">
+                <i class="ph-lightning-bold text-lg"></i>
+                Contact
+            </a>
+        </nav>
+    </header>
+    <!-- ICONS (Phosphor Icons) -->
+    <script src="https://unpkg.com/phosphor-icons"></script>
+
+    <!-- Card 1 -->
+    <div class="grid gap-x-8 gap-y-20 sm:grid-cols-2 lg:grid-cols-3 mt-40 max-w-7xl mx-auto px-6">
+        <div class="overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1590935217281-8f6f9a9539e2?w=600" alt="Project 2"
+                class="w-full h-80 object-cover rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:scale-105">
+            <div class="py-6">
+                <h3 class="text-xl font-semibold">Buildbooker</h3>
+                <a href="Buildbooker.html" target="_blank"
+                    class="mt-4 inline-block px-4 py-2 bg-[#1e1e1e] hover:bg-gray-700 rounded-lg text-sm font-medium transition">
+                    View Project
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="px-6 py-12 bg-black">
+        <div class="mx-auto bg-[#111113]/60 backdrop-blur-xl border border-white/10 border-b-0 rounded-3xl p-10">
+
+            <!-- Top Navigation Links -->
+            <div class="flex justify-center gap-10 text-gray-300 text-lg mb-10">
+                <a href="#home" class="hover:text-white transition">Home</a>
+                <a href="#about" class="hover:text-white transition">About</a>
+                <a href="#works" class="hover:text-white transition">Work</a>
+                <a href="#contact" class="hover:text-white transition">Contact</a>
+            </div>
+
+            <!-- Social Icons -->
+            <div class="flex justify-center gap-6 mb-6">
+                <!-- LinkedIn -->
+                <a href="#"
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-black border border-white/20 hover:border-white transition">
+                    <i class="ph ph-linkedin-logo text-gray-300 text-xl"></i>
+                </a>
+
+                <!-- Behance -->
+                <a href="#"
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-black border border-white/20 hover:border-white transition">
+                    <i class="ph ph-facebook-logo text-gray-300 text-xl"></i>
+                </a>
+
+                <!-- Dribbble -->
+                <a href="#"
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-black border border-white/20 hover:border-white transition">
+                    <i class="ph ph-instagram-logo text-gray-300 text-xl"></i>
+                </a>
+            </div>
+
+            <!-- Copyright -->
+            <p class="text-center text-gray-400 mt-4">
+                © 2025 Riya Patel
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>About | Maitrik Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .glass {
+      backdrop-filter: blur(6px);
+      background: rgba(255, 255, 255, 0.06);
+    }
+  </style>
+</head>
+
+<body class="bg-black">
+  <!-- Navbar -->
+  <header class="fixed w-full top-0 z-50 flex justify-center mt-10">
+    <nav class="backdrop-blur-xl bg-white/5 border border-white/10 
+                px-5 py-2 rounded-2xl flex items-center gap-8 shadow-lg">
+
+      <!-- Home (Active) -->
+      <a href="index.html"
+        class="flex items-center gap-2 px-4 py-3 rounded-xl bg-black text-white font-medium transition">
+        <i class="ph-house-simple-bold text-lg"></i>
+        Home
+      </a>
+
+      <!-- About -->
+      <a href="about.html" class="flex items-center gap-2 text-gray-400 hover:text-white transition">
+        <i class="ph-user-bold text-lg"></i>
+        About
+      </a>
+
+      <!-- Works -->
+      <a href="works.html" class="flex items-center gap-2 text-gray-400 hover:text-white transition">
+        <i class="ph-briefcase-bold text-lg"></i>
+        Works
+      </a>
+
+      <!-- Contact -->
+      <a href="#contact" class="flex items-center gap-2 text-gray-400 hover:text-white transition">
+        <i class="ph-lightning-bold text-lg"></i>
+        Contact
+      </a>
+    </nav>
+  </header>
+
+  <!-- ICONS (Phosphor Icons) -->
+  <script src="https://unpkg.com/phosphor-icons"></script>
+
+  <!-- Main Wrapper -->
+  <div class="max-w-6xl mx-auto px-6 py-16">
+
+    <!-- Title Section -->
+    <div class="text-center mb-14 mt-28">
+      <span class="px-4 py-2 text-md bg-white/10 border-t-2 border-white/10 text-white rounded-full">
+        ✪ Expert Designer
+      </span>
+
+      <h1 class="text-3xl md:text-5xl font-semibold text-white mt-10 leading-tight">
+        Riya Patel,<span class="text-gray-400"> Your Designer</span>
+      </h1>
+
+      <p class="text-gray-400 font-bold text-md mt-5">
+        Brief initial presentation of myself and my previous experiences.
+      </p>
+    </div>
+
+    <!-- Layout Grid -->
+    <section class="w-full">
+      <div class="grid grid-cols-1 md:grid-cols-[0.7fr_1.3fr] gap-10">
+
+        <!-- LEFT Profile Card -->
+        <div
+          class="p-6 rounded-3xl bg-white/5 backdrop-blur-lg border-t-2 border-white/10 shadow transition hover:shadow-xl w-full">
+
+          <div class="overflow-hidden rounded-xl mb-5">
+            <img src="/portfolio/riyaa.jpeg"
+              class="w-full h-full object-cover hover:scale-105 transition-all duration-500" />
+          </div>
+
+          <h2 class="text-xl font-semibold text-white">Hello I am Riya Patel</h2>
+          <p class="text-md text-gray-300 mt-2">Frontend Developer</p>
+
+          <!-- Social Icons -->
+          <div class="flex justify-left gap-6 mb-6 mt-5">
+            <a href="#"
+              class="w-10 h-10 flex items-center justify-center rounded-full bg-black hover:border-white transition">
+              <i class="ph ph-linkedin-logo text-gray-300 text-xl"></i>
+            </a>
+
+            <a href="#"
+              class="w-10 h-10 flex items-center justify-center rounded-full bg-black hover:border-white transition">
+              <i class="ph ph-facebook-logo text-gray-300 text-xl"></i>
+            </a>
+
+            <a href="#"
+              class="w-10 h-10 flex items-center justify-center rounded-full bg-black hover:border-white transition">
+              <i class="ph ph-instagram-logo text-gray-300 text-xl"></i>
+            </a>
+          </div>
+
+          <hr class="border border-white/10">
+
+          <a href="#" class="mt-6 inline-flex items-center gap-2 px-10 py-4 rounded-full
+        bg-gradient-to-b from-[#2b2b2b] to-[#0f0f0f]
+        text-white font-medium
+        shadow-[inset_0_2px_3px_rgba(255,255,255,0.12)]
+        border border-black/20
+        hover:from-[#3a3a3a] hover:to-[#111111]
+        transition-all duration-300">
+            Download CV
+            <i class="ph ph-download text-lg"></i>
+          </a>
+
+        </div>
+
+        <!-- RIGHT Details Card -->
+        <div class="p-5 lg:p-10 rounded-3xl bg-white/5 backdrop-blur-lg border-t-2 border-white/10 shadow w-full">
+
+          <!-- About -->
+          <p class="leading-[1.8] text-md text-gray-300 border-b border-white/10 pb-8">
+            I'm Riya Patel, a Frontend Developer specializing in modern web development,
+            responsive UI engineering, and creating fast, visually engaging digital experiences
+            using HTML, CSS, JavaScript, Vue.js, and Tailwind CSS.
+          </p>
+
+          <!-- <hr class="my-10 border border-white/10"> -->
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-5 border-b border-white/10 py-10">
+            <span class="px-3 py-1 text-md bg-white/10 border border-white/20 rounded-full text-white">Frontend
+              Development</span>
+            <span class="px-3 py-1 text-md bg-white/10 border border-white/20 rounded-full text-white">HTML5</span>
+            <span class="px-3 py-1 text-md bg-white/10 border border-white/20 rounded-full text-white">CSS3</span>
+            <span class="px-3 py-1 text-md bg-white/10 border border-white/20 rounded-full text-white">JavaScript</span>
+            <span class="px-3 py-1 text-md bg-white/10 border border-white/20 rounded-full text-white">Vue.js</span>
+            <span class="px-3 py-1 text-md bg-white/10 border border-white/20 rounded-full text-white">Tailwind
+              CSS</span>
+            <span class="px-3 py-1 text-md bg-white/10 border border-white/20 rounded-full text-white">Responsive
+              UI</span>
+          </div>
+
+
+          <!-- ⭐ Highlights -->
+          <h3 class="text-lg font-semibold text-white mb-4 mt-7">Highlights</h3>
+
+          <ul class="space-y-3 text-gray-300 text-sm border-b border-white/10 pb-10">
+            <li class="flex gap-2">
+              <span class="text-white text-lg leading-none">•</span>
+              Strong eye for clean UI and modern aesthetics
+            </li>
+
+            <li class="flex gap-2">
+              <span class="text-white text-lg leading-none">•</span>
+              Fast learner and adaptable to new tools & frameworks
+            </li>
+
+            <li class="flex gap-2">
+              <span class="text-white text-lg leading-none">•</span>
+              Deep understanding of user behaviour and UX patterns
+            </li>
+
+            <li class="flex gap-2">
+              <span class="text-white text-lg leading-none">•</span>
+              Passionate about frontend, design systems and modern web
+            </li>
+          </ul>
+
+          <!-- <hr class="my-10 border border-white/10"> -->
+          <!-- Experience -->
+          <div class="mt-8 space-y-6">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-semibold text-lg text-white">Frontend Developer</h3>
+                <p class="text-gray-400 text-xs mt-3">Artisanal Byte</p>
+              </div>
+              <span class="text-xs text-gray-400">JAN 2022 – JAN 2023</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- tools use -->
+
+  <section class="bg-black text-white p-6">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="lg:text-4xl text-3xl font-bold text-center"> Tools I Use with Ease</h2>
+      <p class="text-gray-400 max-w-xl mx-auto text-center mt-4 mb-12">I have gained proficiency in a diverse
+        array of tools, equipping
+        me to craft robust and innovative solutions</p>
+
+      <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4">
+
+        <!-- Card 1 -->
+        <div
+          class="flex items-center lg:justify-center justify-left gap-4 border lg:border-white/10 border-white/20 rounded-2xl px-6 py-5 shadow-lg hover:shadow-xl transition">
+          <div class="bg-[#121212] p-3 rounded-xl border border-white/10">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code"
+              class="w-8 h-8">
+          </div>
+          <span class="text-xl font-medium">VS Code</span>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          class="flex items-center lg:justify-center justify-left gap-4 border lg:border-white/10 border-white/20 rounded-2xl px-6 py-8 shadow-lg hover:shadow-xl transition">
+          <div class="bg-[#121212] p-3 rounded-xl border border border-white/10">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"
+              class="w-8 h-8">
+          </div>
+          <span class="text-xl font-medium">Git & GitHub</span>
+        </div>
+
+        <!-- Card 3 -->
+        <div
+          class="flex items-center lg:justify-center justify-left gap-4 border lg:border-white/10 border-white/20 rounded-2xl px-6 py-8 shadow-lg hover:shadow-xl transition">
+          <div class="bg-[#121212] p-3 rounded-xl border border-white/10">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js"
+              class="w-8 h-8">
+          </div>
+          <span class="text-xl font-medium">Vue.js</span>
+        </div>
+
+        <!-- Card 4 -->
+        <div
+          class="flex items-center lg:justify-center justify-left gap-4 border lg:border-white/10 border-white/20 rounded-2xl px-6 py-8 shadow-lg hover:shadow-xl transition">
+          <div class="bg-[#121212] p-3 rounded-xl border border border-white/10">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"
+              class="w-8 h-8">
+          </div>
+          <span class="text-xl font-medium">React.js</span>
+        </div>
+
+        <!-- Card 5 -->
+        <div
+          class="flex items-center lg:justify-center justify-left gap-4 border lg:border-white/10 border-white/20 rounded-2xl px-6 py-8 shadow-lg hover:shadow-xl transition">
+          <div class="bg-[#121212] p-3 rounded-xl border border border-white/10">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg"
+              alt="Tailwind" class="w-8 h-8">
+          </div>
+          <span class="text-xl font-medium">Tailwind CSS</span>
+        </div>
+
+        <!-- Card 6 -->
+        <div
+          class="flex items-center lg:justify-center justify-left gap-4 border lg:border-white/10 border-white/20 rounded-2xl px-6 py-8 shadow-lg hover:shadow-xl transition">
+          <div class="bg-[#121212] p-3 rounded-xl border border border-white/10">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"
+              class="w-8 h-8">
+          </div>
+          <span class="text-xl font-medium">Figma</span>
+        </div>
+        <!-- Card 7 -->
+        <div
+          class="flex items-center lg:justify-center justify-left gap-4 border lg:border-white/10 border-white/20 rounded-2xl px-6 py-8 shadow-lg hover:shadow-xl transition">
+          <div class="bg-[#121212] p-3 rounded-xl border border border-white/10">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg"
+              alt="Tailwind" class="w-8 h-8">
+          </div>
+          <span class="text-xl font-medium">Tailwind CSS</span>
+        </div>
+
+        <!-- Card 8 -->
+        <div
+          class="flex items-center lg:justify-center justify-left gap-4 border lg:border-white/10 border-white/20 rounded-2xl px-6 py-8 shadow-lg hover:shadow-xl transition">
+          <div class="bg-[#121212] p-3 rounded-xl border border border-white/10">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"
+              class="w-8 h-8">
+          </div>
+          <span class="text-xl font-medium">Figma</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="px-6 py-12 bg-black">
+    <div class="mx-auto bg-[#111113]/60 backdrop-blur-xl border border-white/10 border-b-0 rounded-3xl p-10">
+
+      <!-- Top Navigation Links -->
+      <div class="flex justify-center gap-10 text-gray-300 text-lg mb-10">
+        <a href="#home" class="hover:text-white transition">Home</a>
+        <a href="#about" class="hover:text-white transition">About</a>
+        <a href="#works" class="hover:text-white transition">Work</a>
+        <a href="#contact" class="hover:text-white transition">Contact</a>
+      </div>
+
+      <!-- Social Icons -->
+      <div class="flex justify-center gap-6 mb-6">
+        <!-- LinkedIn -->
+        <a href="#"
+          class="w-10 h-10 flex items-center justify-center rounded-full bg-black border border-white/20 hover:border-white transition">
+          <i class="ph ph-linkedin-logo text-gray-300 text-xl"></i>
+        </a>
+
+        <!-- Behance -->
+        <a href="#"
+          class="w-10 h-10 flex items-center justify-center rounded-full bg-black border border-white/20 hover:border-white transition">
+          <i class="ph ph-facebook-logo text-gray-300 text-xl"></i>
+        </a>
+
+        <!-- Dribbble -->
+        <a href="#"
+          class="w-10 h-10 flex items-center justify-center rounded-full bg-black border border-white/20 hover:border-white transition">
+          <i class="ph ph-instagram-logo text-gray-300 text-xl"></i>
+        </a>
+      </div>
+
+      <!-- Copyright -->
+      <p class="text-center text-gray-400 mt-4">
+        © 2025 Riya Patel
+      </p>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+
+</html>
