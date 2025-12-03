@@ -11,6 +11,22 @@
       backdrop-filter: blur(6px);
       background: rgba(255, 255, 255, 0.06);
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Fade-in animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-in-out;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 
@@ -51,7 +67,7 @@
   <script src="https://unpkg.com/phosphor-icons"></script>
 
   <!-- Main Wrapper -->
-  <div class="max-w-6xl mx-auto px-6 py-16">
+  <div class="max-w-6xl mx-auto px-6 py-16 fade-up">
 
     <!-- Title Section -->
     <div class="text-center mb-14 mt-28">
@@ -77,8 +93,7 @@
           class="p-6 rounded-3xl bg-white/5 backdrop-blur-lg border-t-2 border-white/10 shadow transition hover:shadow-xl w-full">
 
           <div class="overflow-hidden rounded-xl mb-5">
-            <img src="riyaa.jpeg"
-              class="w-full h-full object-cover hover:scale-105 transition-all duration-500" />
+            <img src="riyaa.jpeg" class="w-full h-full object-cover hover:scale-105 transition-all duration-500" />
           </div>
 
           <h2 class="text-xl font-semibold text-white">Hello I am Riya Patel</h2>
@@ -187,7 +202,7 @@
   </div>
   <!-- tools use -->
 
-  <section class="bg-black text-white p-6">
+  <section class="bg-black text-white p-6 fade-up">
     <div class="max-w-7xl mx-auto">
       <h2 class="lg:text-4xl text-3xl font-bold text-center"> Tools I Use with Ease</h2>
       <p class="text-gray-400 max-w-xl mx-auto text-center mt-4 mb-12">I have gained proficiency in a diverse
@@ -280,7 +295,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="px-6 py-12 bg-black">
+  <footer class="px-6 py-12 bg-black fade-up">
     <div class="mx-auto bg-[#111113]/60 backdrop-blur-xl border border-white/10 border-b-0 rounded-3xl p-10">
 
       <!-- Top Navigation Links -->
@@ -318,7 +333,15 @@
       </p>
     </div>
   </footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+  </script>
 </body>
 
 </html>
