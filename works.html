@@ -11,6 +11,22 @@
       backdrop-filter: blur(6px);
       background: rgba(255, 255, 255, 0.06);
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Fade-in animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-in-out;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 
@@ -42,7 +58,8 @@
       </a>
 
       <!-- Works -->
-      <a href="works.html" class="flex items-center gap-2  px-4 py-3 rounded-xl bg-black text-white hover:text-white transition">
+      <a href="works.html"
+        class="flex items-center gap-2  px-4 py-3 rounded-xl bg-black text-white hover:text-white transition">
         <i class="ph-briefcase-bold text-xl"></i>
         Works
       </a>
@@ -69,7 +86,7 @@
       <div class="grid gap-x-8 gap-y-20 sm:grid-cols-2 lg:grid-cols-3 mt-20">
 
         <!-- Card 1 -->
-        <div class=" overflow-hidden">
+        <div class=" overflow-hidden fade-up">
           <img src="maaplo.webp" alt="Project 1"
             class="w-full h-80 object-cover rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:scale-105">
           <div class="py-4">
@@ -82,8 +99,8 @@
           </div>
         </div>
 
-        <!-- Card 2 -->
-        <div class="overflow-hidden">
+        <!-- Card 2 --> 
+        <div class="overflow-hidden fade-up">
           <img src="buildbooker.webp" alt="Project 2"
             class="w-full h-80 object-cover rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:scale-105">
           <div class="py-6">
@@ -96,7 +113,7 @@
         </div>
 
         <!-- Card 3 -->
-        <div class="overflow-hidden">
+        <div class="overflow-hidden fade-up">
           <img src="omf.webp" alt="Project 3"
             class="w-full h-64 lg:h-80 object-cover rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:scale-105">
           <div class="py-6">
@@ -109,7 +126,7 @@
         </div>
 
         <!-- Card 4 -->
-        <div class=" overflow-hidden">
+        <div class=" overflow-hidden fade-up">
           <img src="dsynhub.webp" alt="Project 1"
             class="w-full h-64 lg:h-80 object-cover rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:scale-105">
           <div class="py-4">
@@ -123,7 +140,7 @@
         </div>
 
         <!-- Card 5 -->
-        <div class="overflow-hidden">
+        <div class="overflow-hidden fade-up">
           <img src="feedme.webp" alt="Project 2"
             class="w-full h-80 object-cover rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:scale-105">
           <div class="py-6">
@@ -136,7 +153,7 @@
         </div>
 
         <!-- Card 6 -->
-        <div class="overflow-hidden">
+        <div class="overflow-hidden fade-up">
           <img src="sttava.webp" alt="Project 3"
             class="w-full h-64 lg:h-80 object-cover rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:scale-105">
           <div class="py-6">
@@ -149,7 +166,7 @@
         </div>
 
         <!-- Card 7 -->
-        <div class=" overflow-hidden">
+        <div class=" overflow-hidden fade-up">
           <img src="vr5.webp" alt="Project 1"
             class="w-full h-64 lg:h-80 object-cover rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:scale-105">
           <div class="py-4">
@@ -163,7 +180,7 @@
         </div>
 
         <!-- Card 8 -->
-        <div class="overflow-hidden">
+        <div class="overflow-hidden fade-up">
           <img src="vidzooka.webp" alt="Project 2"
             class="w-full h-80 object-cover rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:scale-105">
           <div class="py-6">
@@ -176,7 +193,7 @@
         </div>
 
         <!-- Card 9 -->
-        <div class="overflow-hidden">
+        <div class="overflow-hidden fade-up">
           <img src="helox_power.webp" alt="Project 3"
             class="w-full h-64 lg:h-80 object-cover rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:scale-105">
           <div class="py-6">
@@ -202,15 +219,15 @@
   </section>
 
   <!-- Footer -->
-  <footer class="px-6 py-12 bg-black">
+  <footer class="px-6 py-12 bg-black fade-up">
     <div class="mx-auto bg-[#111113]/60 backdrop-blur-xl border border-white/10 border-b-0 rounded-3xl p-10">
 
       <!-- Top Navigation Links -->
-      <div class="flex justify-center gap-10 text-gray-300 text-lg mb-10">
+      <div class="flex justify-center gap-5 lg:gap-10 text-gray-300 text-lg mb-10">
         <a href="index.html" class="hover:text-white transition">Home</a>
         <a href="about.html" class="hover:text-white transition">About</a>
         <a href="works.html" class="hover:text-white transition">Work</a>
-        <a href="#contact" class="hover:text-white transition">Contact</a>
+        <a href="contact.html" class="hover:text-white transition">Contact</a>
       </div>
 
       <!-- Social Icons -->
@@ -240,6 +257,15 @@
       </p>
     </div>
   </footer>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+  </script>
 </body>
 
 </html>

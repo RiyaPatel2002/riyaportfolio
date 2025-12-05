@@ -32,36 +32,45 @@
 
 <body class="bg-black">
   <!-- Navbar -->
-  <header class="fixed w-full top-0 z-50 flex justify-center mt-10">
-    <nav class="backdrop-blur-xl bg-white/5 border border-white/10 
-                px-5 py-2 rounded-2xl flex items-center gap-8 shadow-lg">
+   <header class="fixed w-full top-0 z-50 flex justify-center mt-10">
+        <nav class="backdrop-blur-xl bg-white/5 border border-white/10 
+               px-5 py-2 rounded-2xl flex items-center gap-8 shadow-lg
+               overflow-x-auto whitespace-nowrap scroll-smooth
+               md:overflow-visible mx-5">
 
-      <!-- Home (Active) -->
-      <a href="index.html"
-        class="flex items-center gap-2 font-medium text-gray-400 hover:text-white transition">
-        <i class="ph-house-simple-bold text-lg"></i>
-        Home
-      </a>
+            <!-- Hide scrollbar -->
+            <style>
+                nav::-webkit-scrollbar {
+                    display: none;
+                }
+            </style>
 
-      <!-- About -->
-      <a href="about.html" class="flex items-center gap-2 bg-black px-4 py-3 rounded-xl text-white transition">
-        <i class="ph-user-bold text-lg"></i>
-        About
-      </a>
+            <!-- Home -->
+            <a href="index.html"
+                class="flex items-center gap-2 font-medium text-gray-400 transition">
+                <i class="ph-house-simple-bold text-xl"></i>
+                Home
+            </a>
 
-      <!-- Works -->
-      <a href="works.html" class="flex items-center gap-2 text-gray-400 hover:text-white transition">
-        <i class="ph-briefcase-bold text-lg"></i>
-        Works
-      </a>
+            <!-- About -->
+            <a href="about.html" class="flex items-center px-4 py-3 rounded-xl bg-black text-white gap-2  hover:text-white transition">
+                <i class="ph-user-bold text-xl"></i>
+                About
+            </a>
 
-      <!-- Contact -->
-      <a href="#contact" class="flex items-center gap-2 text-gray-400 hover:text-white transition">
-        <i class="ph-lightning-bold text-lg"></i>
-        Contact
-      </a>
-    </nav>
-  </header>
+            <!-- Works -->
+            <a href="works.html" class="flex items-center gap-2 text-gray-400 hover:text-white transition">
+                <i class="ph-briefcase-bold text-xl"></i>
+                Works
+            </a>
+
+            <!-- Contact -->
+            <a href="#contact" class="flex items-center gap-2 text-gray-400 hover:text-white transition">
+                <i class="ph-lightning-bold text-xl"></i>
+                Contact
+            </a>
+        </nav>
+    </header>
 
   <!-- ICONS (Phosphor Icons) -->
   <script src="https://unpkg.com/phosphor-icons"></script>
@@ -332,44 +341,44 @@
   </section>
 
   <!-- Footer -->
-  <footer class="px-6 py-12 bg-black fade-up">
-    <div class="mx-auto bg-[#111113]/60 backdrop-blur-xl border border-white/10 border-b-0 rounded-3xl p-10">
+    <footer class="px-6 py-12 bg-black fade-up">
+        <div class="mx-auto bg-[#111113]/60 backdrop-blur-xl border border-white/10 border-b-0 rounded-3xl p-10">
 
-      <!-- Top Navigation Links -->
-      <div class="flex justify-center gap-10 text-gray-300 text-lg mb-10">
-        <a href="index.html" class="hover:text-white transition">Home</a>
-        <a href="about.html" class="hover:text-white transition">About</a>
-        <a href="works.html" class="hover:text-white transition">Work</a>
-        <a href="#contact" class="hover:text-white transition">Contact</a>
-      </div>
+            <!-- Top Navigation Links -->
+            <div class="flex justify-center gap-5 lg:gap-10 text-gray-300 text-lg mb-10">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="about.html" class="hover:text-white transition">About</a>
+                <a href="works.html" class="hover:text-white transition">Work</a>
+                <a href="contact.html" class="hover:text-white transition">Contact</a>
+            </div>
 
-      <!-- Social Icons -->
-      <div class="flex justify-center gap-6 mb-6">
-        <!-- LinkedIn -->
-        <a href="#"
-          class="w-10 h-10 flex items-center justify-center rounded-full bg-black border border-white/20 hover:border-white transition">
-          <i class="ph ph-linkedin-logo text-gray-300 text-xl"></i>
-        </a>
+            <!-- Social Icons -->
+            <div class="flex justify-center gap-6 mb-6">
+                <!-- LinkedIn -->
+                <a href="#"
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-black border border-white/20 hover:border-white transition">
+                    <i class="ph ph-linkedin-logo text-gray-300 text-xl"></i>
+                </a>
 
-        <!-- Behance -->
-        <a href="#"
-          class="w-10 h-10 flex items-center justify-center rounded-full bg-black border border-white/20 hover:border-white transition">
-          <i class="ph ph-facebook-logo text-gray-300 text-xl"></i>
-        </a>
+                <!-- Behance -->
+                <a href="#"
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-black border border-white/20 hover:border-white transition">
+                    <i class="ph ph-facebook-logo text-gray-300 text-xl"></i>
+                </a>
 
-        <!-- Dribbble -->
-        <a href="#"
-          class="w-10 h-10 flex items-center justify-center rounded-full bg-black border border-white/20 hover:border-white transition">
-          <i class="ph ph-instagram-logo text-gray-300 text-xl"></i>
-        </a>
-      </div>
+                <!-- Dribbble -->
+                <a href="#"
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-black border border-white/20 hover:border-white transition">
+                    <i class="ph ph-instagram-logo text-gray-300 text-xl"></i>
+                </a>
+            </div>
 
-      <!-- Copyright -->
-      <p class="text-center text-gray-400 mt-4">
-        © 2025 Riya Patel
-      </p>
-    </div>
-  </footer>
+            <!-- Copyright -->
+            <p class="text-center text-gray-400 mt-4">
+                © 2025 Riya Patel
+            </p>
+        </div>
+    </footer>
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
