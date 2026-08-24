@@ -7,8 +7,159 @@
     <title>Riya Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        :root {
+            --accent: #14b8a6;
+            --accent-soft: rgba(20, 184, 166, 0.2);
+        }
+
         html {
             scroll-behavior: smooth;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        body.is-loading {
+            overflow: hidden;
+        }
+
+        /* Intro animation */
+        #page-loader {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            background: #050505;
+            transition: opacity 0.7s ease, visibility 0.7s ease;
+        }
+
+        #page-loader::before,
+        #page-loader::after {
+            content: "";
+            position: absolute;
+            width: 42vw;
+            height: 42vw;
+            min-width: 280px;
+            min-height: 280px;
+            border: 1px solid rgba(20, 184, 166, 0.16);
+            border-radius: 999px;
+            animation: loader-pulse 3s ease-in-out infinite;
+        }
+
+        #page-loader::after {
+            width: 70vw;
+            height: 70vw;
+            min-width: 520px;
+            min-height: 520px;
+            animation-delay: -1.5s;
+        }
+
+        #page-loader.is-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            position: relative;
+            z-index: 1;
+            width: min(340px, calc(100vw - 48px));
+            text-align: center;
+        }
+
+        .loader-mark {
+            position: relative;
+            display: grid;
+            place-items: center;
+            width: 124px;
+            height: 124px;
+            margin: 0 auto 30px;
+            padding: 5px;
+            border: 1px solid rgba(94, 234, 212, 0.7);
+            border-radius: 50%;
+            background: linear-gradient(#090d0d, #090d0d) padding-box,
+                linear-gradient(145deg, rgba(255, 255, 255, 0.85), #14b8a6 42%, rgba(20, 184, 166, 0.08)) border-box;
+            box-shadow: 0 0 0 1px rgba(20, 184, 166, 0.12), 0 0 45px rgba(20, 184, 166, 0.3), inset 0 0 20px rgba(20, 184, 166, 0.15);
+            animation: loader-float 3.2s ease-in-out infinite;
+        }
+
+        .loader-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 18%;
+            border-radius: 50%;
+            filter: saturate(1.08) contrast(1.04);
+        }
+
+        .loader-mark::before {
+            content: "";
+            position: absolute;
+            inset: 5px;
+            z-index: 2;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .loader-mark::after {
+            content: "";
+            position: absolute;
+            inset: -12px;
+            border: 1px dashed rgba(94, 234, 212, 0.42);
+            border-radius: 50%;
+            animation: loader-spin 9s linear infinite;
+        }
+
+        .loader-name {
+            margin-bottom: 8px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 0.24em;
+            text-indent: 0.24em;
+        }
+
+        .loader-label {
+            margin-bottom: 14px;
+            color: #a7f3d0;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+        }
+
+        .loader-track {
+            height: 2px;
+            overflow: hidden;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .loader-progress {
+            width: 0;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #0f766e, #5eead4);
+            box-shadow: 0 0 16px rgba(45, 212, 191, 0.8);
+            transition: width 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @keyframes loader-float {
+            0%, 100% { transform: translateY(0) rotate(-3deg); }
+            50% { transform: translateY(-9px) rotate(3deg); }
+        }
+
+        @keyframes loader-spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes loader-pulse {
+            0%, 100% { transform: scale(0.9); opacity: 0.35; }
+            50% { transform: scale(1.08); opacity: 0.9; }
         }
 
         /* Fade-in animation */
@@ -16,6 +167,7 @@
             opacity: 0;
             transform: translateY(40px);
             transition: all 0.8s ease-in-out;
+            transition-delay: var(--reveal-delay, 0ms);
         }
 
         .fade-up.visible {
@@ -27,10 +179,389 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(12px);
         }
+
+        /* Interactive hero background */
+        .hero-section {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 37%;
+            left: 50%;
+            z-index: 0;
+            width: min(520px, 78vw);
+            height: 260px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse, rgba(20, 184, 166, 0.18), rgba(20, 184, 166, 0.04) 48%, transparent 72%);
+            filter: blur(34px);
+            pointer-events: none;
+            transform: translateX(-50%);
+            animation: hero-glow 8s ease-in-out infinite alternate;
+        }
+
+        .hero-bubbles {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .hero-bubbles span {
+            position: absolute;
+            top: var(--bubble-top);
+            left: var(--bubble-left);
+            width: var(--bubble-size);
+            height: var(--bubble-size);
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 26%, rgba(236, 254, 255, 0.95), rgba(94, 234, 212, 0.72) 34%, rgba(20, 184, 166, 0.08) 72%, transparent 76%);
+            box-shadow: 0 0 14px rgba(45, 212, 191, 0.52), 0 0 34px rgba(20, 184, 166, 0.16);
+            opacity: 0;
+            animation: bubble-float var(--bubble-duration) ease-in-out var(--bubble-delay) infinite alternate;
+        }
+
+        .hero-section.hero-ready .hero-bubbles span {
+            opacity: var(--bubble-opacity);
+        }
+
+        .hero-scroll-cue {
+            position: absolute;
+            bottom: 28px;
+            left: 50%;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 9px;
+            color: rgba(255, 255, 255, 0.42);
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            transform: translateX(-50%);
+            animation: cue-float 2.3s ease-in-out infinite;
+        }
+
+        .hero-scroll-cue::after {
+            content: "";
+            width: 1px;
+            height: 35px;
+            background: linear-gradient(to bottom, rgba(94, 234, 212, 0.9), transparent);
+        }
+
+        .name-highlight {
+            color: transparent;
+            background: linear-gradient(100deg, #0f766e 10%, #5eead4 48%, #99f6e4 70%, #0f766e 90%);
+            background-size: 220% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            animation: name-shimmer 5s linear infinite;
+        }
+
+        @keyframes hero-glow {
+            from { opacity: 0.55; transform: translateX(-50%) scale(0.92); }
+            to { opacity: 1; transform: translateX(-50%) scale(1.08); }
+        }
+
+        @keyframes bubble-float {
+            from { transform: translate3d(0, 20px, 0) scale(0.72); }
+            to { transform: translate3d(var(--bubble-drift), -32px, 0) scale(1.08); }
+        }
+
+        @keyframes cue-float {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, 0); }
+            50% { opacity: 1; transform: translate(-50%, 7px); }
+        }
+
+        @keyframes name-shimmer {
+            to { background-position: 220% center; }
+        }
+
+        @keyframes underline-grow {
+            from { width: 0; opacity: 0; }
+            to { width: 74px; opacity: 1; }
+        }
+
+        .hero-section::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background: radial-gradient(360px circle at var(--pointer-x, 50%) var(--pointer-y, 45%), rgba(20, 184, 166, 0.14), transparent 68%);
+            transition: background 0.2s ease-out;
+        }
+
+        .hero-content {
+            will-change: transform;
+            transform: translate3d(var(--hero-x, 0px), var(--hero-y, 0px), 0);
+            transition: transform 0.18s ease-out;
+        }
+
+        .hero-intro > * {
+            opacity: 0;
+            filter: blur(7px);
+            transform: translateY(58px);
+            transition: opacity 0.9s ease, filter 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .hero-section.hero-ready .hero-intro > * {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+
+        .hero-section.hero-ready .hero-intro > *:nth-child(1) { transition-delay: 80ms; }
+        .hero-section.hero-ready .hero-intro > *:nth-child(2) { transition-delay: 220ms; }
+        .hero-section.hero-ready .hero-intro > *:nth-child(3) { transition-delay: 360ms; }
+        .hero-section.hero-ready .hero-intro > *:nth-child(4) { transition-delay: 500ms; }
+
+        .hero-content h1 {
+            position: relative;
+        }
+
+        .hero-content h1::after {
+            content: "";
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            border-radius: 99px;
+            background: linear-gradient(90deg, transparent, #5eead4, transparent);
+            opacity: 0;
+            transform: translateX(-50%);
+        }
+
+        .hero-section.hero-ready .hero-content h1::after {
+            animation: underline-grow 0.9s ease 0.72s forwards;
+        }
+
+        body > section:not(#home) h2 {
+            position: relative;
+            padding-bottom: 14px;
+        }
+
+        body > section:not(#home) h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            border-radius: 99px;
+            background: linear-gradient(90deg, transparent, #14b8a6, transparent);
+            transform: translateX(-50%);
+            transition: width 0.9s ease 0.25s;
+        }
+
+        body > section:not(#home).visible h2::after {
+            width: 68px;
+        }
+
+        nav a,
+        footer a {
+            will-change: transform;
+        }
+
+        nav a:hover,
+        footer a:hover {
+            transform: translateY(-2px);
+        }
+
+        footer .flex a:hover {
+            transform: translateY(-4px) scale(1.08);
+        }
+
+        .interactive-card {
+            --card-x: 0deg;
+            --card-y: 0deg;
+            --reveal-y: 0px;
+            transform: perspective(900px) rotateX(var(--card-x)) rotateY(var(--card-y)) translateZ(0);
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        .fade-up.interactive-card {
+            --reveal-y: 42px;
+            transform: perspective(900px) translateY(var(--reveal-y)) rotateX(var(--card-x)) rotateY(var(--card-y)) translateZ(0);
+        }
+
+        .fade-up.interactive-card.visible {
+            --reveal-y: 0px;
+        }
+
+        .interactive-card:hover {
+            border-color: rgba(45, 212, 191, 0.45);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35), 0 0 24px rgba(20, 184, 166, 0.09);
+        }
+
+        .interactive-card img,
+        .interactive-card > div {
+            transition: transform 0.35s ease;
+        }
+
+        .interactive-card:hover img {
+            transform: scale(1.04);
+        }
+
+        .interactive-button {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interactive-button::before {
+            content: "";
+            position: absolute;
+            top: var(--ripple-y, 50%);
+            left: var(--ripple-x, 50%);
+            width: 0;
+            height: 0;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.16);
+            transform: translate(-50%, -50%);
+            transition: width 0.55s ease, height 0.55s ease;
+        }
+
+        .interactive-button:hover::before {
+            width: 280px;
+            height: 280px;
+        }
+
+        .interactive-button > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 640px) {
+            header {
+                margin-top: 12px !important;
+            }
+
+            header nav {
+                width: calc(100vw - 16px);
+                max-width: 420px;
+                gap: 2px;
+                padding: 4px;
+                border-radius: 16px;
+            }
+
+            header nav a {
+                gap: 5px;
+                padding: 8px 9px;
+                font-size: 11px;
+            }
+
+            header nav i {
+                font-size: 14px;
+            }
+
+            #home.hero-section {
+                height: auto !important;
+                min-height: 0 !important;
+                padding-top: 88px;
+                padding-bottom: 52px;
+            }
+
+            #home .hero-intro {
+                width: 100%;
+                max-width: 360px;
+            }
+
+            #home .hero-intro > button {
+                margin-top: 14px !important;
+                margin-bottom: 22px !important;
+                padding: 10px 16px;
+            }
+
+            #home .hero-intro h1 {
+                font-size: 1.7rem;
+                line-height: 1.1;
+            }
+
+            #home .hero-intro p {
+                max-width: 345px;
+                margin-top: 18px;
+                padding: 0 8px;
+                font-size: 12px;
+                line-height: 1.55;
+            }
+
+            #home .hero-intro > div.mt-8 {
+                gap: 10px;
+                margin-top: 22px !important;
+            }
+
+            #home .hero-intro > div.mt-8 a {
+                padding: 10px 14px;
+                font-size: 12px;
+            }
+
+            #home .hero-scroll-cue {
+                display: none;
+            }
+        }
+
+        @media (max-width: 360px) {
+            header nav {
+                gap: 0;
+            }
+
+            header nav a {
+                gap: 0;
+                padding: 8px 8px;
+                font-size: 10px;
+            }
+
+            header nav i {
+                display: none;
+            }
+
+            #home .hero-intro h1 {
+                font-size: 1.45rem;
+            }
+
+            #home .hero-intro p {
+                font-size: 11px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .fade-up { opacity: 1; transform: none; }
+            .hero-content { transform: none; }
+            .hero-intro > * { opacity: 1; filter: none; transform: none; }
+            .hero-scroll-cue { display: none; }
+        }
+
     </style>
 </head>
 
-<body class="text-white font-sans bg-black">
+<body class="text-white font-sans bg-black is-loading">
+    <!-- Opening animation -->
+    <div id="page-loader" role="status" aria-label="Loading Riya Patel portfolio">
+        <div class="loader-content">
+            <div class="loader-mark">
+                <img class="loader-photo" src="riyaa.jpeg" alt="Riya Patel" />
+            </div>
+            <div class="loader-name">RIYA PATEL</div>
+            <div class="loader-label">Creating digital experiences</div>
+            <div class="loader-track" aria-hidden="true">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
     <!-- Navbar -->
     <!-- Navbar -->
     <header class="fixed w-full top-0 z-50 flex justify-center mt-10">
@@ -78,13 +609,14 @@
     <script src="https://unpkg.com/phosphor-icons"></script>
     <!-- Hero -->
     <section id="home"
-        class="lg:h-[700px] h-[700px] flex flex-col justify-center items-center text-center px-6 lg:px-5">
+        class="hero-section lg:h-[725px] h-auto min-h-0 flex flex-col justify-center items-center text-center px-6 lg:px-5">
 
         <!-- Background Image -->
         <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
             style="background-image: url('grid.jpg');"></div>
-        <div class="relative z-10 flex flex-col items-center items-center justify-center  fade-up">
-            <button class="flex gap-3 px-7 py-3 mt-20 mb-10 rounded-full
+        <div class="hero-bubbles" aria-hidden="true"></div>
+        <div class="relative z-10 flex flex-col items-center items-center justify-center hero-content hero-intro">
+            <button class="interactive-button flex gap-3 px-7 py-3 mt-20 mb-10 rounded-full
 bg-[#0d0d0d] border border-white/10
 shadow-[inset_0_2px_4px_rgba(255,255,255,0.05),0_4px_15px_rgba(0,0,0,0.6)]
 hover:shadow-[0_6px_20px_rgba(0,0,0,0.8)]
@@ -109,23 +641,23 @@ transition-all duration-300">
 
             <div class="mt-8 flex gap-4">
                 <a href="#works"
-                    class="px-6 py-3 bg-teal-700 border border-teal-700 hover:text-teal-800 rounded-full font-semibold hover:bg-black transition">View
+                    class="interactive-button px-6 py-3 bg-teal-700 border border-teal-700 hover:text-teal-800 rounded-full font-semibold hover:bg-black transition">View
                     My Work</a>
                 <a href="#contact"
-                    class="px-6 py-3 border border-teal-700 text-teal-700 rounded-full font-semibold hover:bg-teal-700 hover:text-white transition">Contact
+                    class="interactive-button px-6 py-3 border border-teal-700 text-teal-700 rounded-full font-semibold hover:bg-teal-700 hover:text-white transition">Contact
                     Me</a>
             </div>
         </div>
     </section>
 
     <!-- My Skills & Expertise -->
-    <section class="bg-black text-white fade-up">
+    <section class="bg-black text-white">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="lg:text-4xl text-2xl font-bold text-center">My Skills & Expertise</h2>
             <p class="text-gray-400 max-w-xl mx-auto text-center mt-4 mb-12">As a web designer, I possess a diverse set
                 of skills and expertise to bring your web design visions to life</p>
 
-            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div class="grid skills-grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 
                 <!-- Card 1 -->
                 <div
@@ -296,7 +828,7 @@ transition-all duration-300">
 
     <!-- tools use -->
 
-    <section class="bg-black text-white lg:p-24 p-5 fade-up">
+    <section class="bg-black text-white lg:p-24 p-5">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="lg:text-4xl text-xl mt-14 lg:mt-0 font-bold text-center"> Tools I Use with Ease</h2>
             <p class="text-gray-400 max-w-xl mx-auto text-center mt-4 mb-12">I have gained proficiency in a diverse
@@ -426,7 +958,7 @@ transition-all duration-300">
     </section>
 
     <!-- work -->
-    <section class="bg-black text-white pb-10 lg:pb-20 fade-up">
+    <section id="works" class="bg-black text-white pb-10 lg:pb-20">
         <div class="max-w-7xl mx-auto px-6">
 
             <!-- Section Title -->
@@ -487,7 +1019,7 @@ transition-all duration-300">
     </section>
 
     <!-- Footer -->
-    <footer class="px-6 py-12 bg-black fade-up">
+    <footer id="contact" class="px-6 py-12 bg-black">
         <div class="mx-auto bg-[#111113]/60 backdrop-blur-xl border border-white/10 border-b-0 rounded-3xl p-10">
 
             <!-- Top Navigation Links -->
@@ -528,13 +1060,146 @@ transition-all duration-300">
 
 
     <script>
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        // Reveal sections as they enter the viewport, with a natural stagger.
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add("visible");
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
             });
-        }, { threshold: 0.2 });
+        }, { threshold: 0.14 });
 
-        document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+        // Give every card group a consistent reveal sequence across the home page.
+        document.querySelectorAll(".grid").forEach((grid) => {
+            Array.from(grid.children).forEach((card) => {
+                card.classList.add("fade-up");
+            });
+        });
+
+        document.querySelectorAll(".fade-up").forEach((element, index) => {
+            element.style.setProperty("--reveal-delay", `${Math.min(index * 55, 330)}ms`);
+            if (prefersReducedMotion) {
+                element.classList.add("visible");
+            } else {
+                observer.observe(element);
+            }
+        });
+
+        // Stagger each individual grid, so Skills, Tools, and Portfolio cards animate cleanly.
+        document.querySelectorAll(".grid").forEach((grid) => {
+            Array.from(grid.children).forEach((card, index) => {
+                card.style.setProperty("--reveal-delay", `${index * 120}ms`);
+            });
+        });
+
+        // Small floating bokeh balls around the hero edges.
+        const bubbleField = document.querySelector(".hero-bubbles");
+        const bubbleLayout = [
+            ["14%", "9%", "7px", "4.6s", "-0.4s", "8px", "0.62"],
+            ["23%", "18%", "4px", "5.8s", "-2.1s", "-10px", "0.42"],
+            ["74%", "8%", "5px", "4.9s", "-1.2s", "12px", "0.5"],
+            ["84%", "17%", "8px", "6.2s", "-3.4s", "-9px", "0.58"],
+            ["17%", "88%", "5px", "5.4s", "-0.9s", "10px", "0.48"],
+            ["29%", "78%", "3px", "4.2s", "-2.8s", "-7px", "0.36"],
+            ["70%", "90%", "7px", "6.1s", "-1.7s", "-12px", "0.5"],
+            ["82%", "76%", "4px", "4.7s", "-3.1s", "8px", "0.42"],
+            ["11%", "42%", "3px", "5.2s", "-1.9s", "-8px", "0.35"],
+            ["65%", "27%", "3px", "4.4s", "-0.7s", "9px", "0.3"]
+        ];
+
+        if (bubbleField && !prefersReducedMotion) {
+            bubbleLayout.forEach(([top, left, size, duration, delay, drift, opacity]) => {
+                const bubble = document.createElement("span");
+                bubble.style.setProperty("--bubble-top", top);
+                bubble.style.setProperty("--bubble-left", left);
+                bubble.style.setProperty("--bubble-size", size);
+                bubble.style.setProperty("--bubble-duration", duration);
+                bubble.style.setProperty("--bubble-delay", delay);
+                bubble.style.setProperty("--bubble-drift", drift);
+                bubble.style.setProperty("--bubble-opacity", opacity);
+                bubbleField.appendChild(bubble);
+            });
+        }
+
+        // Intro loader: it exits after the page is ready, with a short minimum
+        // duration so the opening animation feels intentional rather than abrupt.
+        const loader = document.getElementById("page-loader");
+        const progress = document.querySelector(".loader-progress");
+        let loaderFinished = false;
+        const startedAt = performance.now();
+
+        requestAnimationFrame(() => {
+            if (progress) progress.style.width = "72%";
+        });
+
+        function finishLoader() {
+            if (loaderFinished) return;
+            loaderFinished = true;
+            const remaining = Math.max(0, 1150 - (performance.now() - startedAt));
+            setTimeout(() => {
+                if (progress) progress.style.width = "100%";
+                setTimeout(() => {
+                    loader.classList.add("is-hidden");
+                    document.body.classList.remove("is-loading");
+                    document.querySelector(".hero-section")?.classList.add("hero-ready");
+                }, prefersReducedMotion ? 0 : 380);
+            }, remaining);
+        }
+
+        window.addEventListener("load", finishLoader, { once: true });
+        setTimeout(finishLoader, 2600);
+
+        if (!prefersReducedMotion) {
+            const hero = document.querySelector(".hero-section");
+            const heroContent = document.querySelector(".hero-content");
+
+            hero?.addEventListener("pointermove", (event) => {
+                const bounds = hero.getBoundingClientRect();
+                const x = event.clientX - bounds.left;
+                const y = event.clientY - bounds.top;
+                const percentX = (x / bounds.width) * 100;
+                const percentY = (y / bounds.height) * 100;
+                hero.style.setProperty("--pointer-x", `${percentX}%`);
+                hero.style.setProperty("--pointer-y", `${percentY}%`);
+                heroContent?.style.setProperty("--hero-x", `${(x / bounds.width - 0.5) * 10}px`);
+                heroContent?.style.setProperty("--hero-y", `${(y / bounds.height - 0.5) * 10}px`);
+            });
+
+            hero?.addEventListener("pointerleave", () => {
+                hero.style.setProperty("--pointer-x", "50%");
+                hero.style.setProperty("--pointer-y", "45%");
+                heroContent?.style.setProperty("--hero-x", "0px");
+                heroContent?.style.setProperty("--hero-y", "0px");
+            });
+
+            // Add a subtle 3D response to skill, tool, and portfolio cards.
+            document.querySelectorAll(".grid > div").forEach((card) => {
+                card.classList.add("interactive-card");
+                card.addEventListener("pointermove", (event) => {
+                    const bounds = card.getBoundingClientRect();
+                    const rotateX = ((event.clientY - bounds.top) / bounds.height - 0.5) * -5;
+                    const rotateY = ((event.clientX - bounds.left) / bounds.width - 0.5) * 5;
+                    card.style.setProperty("--card-x", `${rotateX}deg`);
+                    card.style.setProperty("--card-y", `${rotateY}deg`);
+                });
+                card.addEventListener("pointerleave", () => {
+                    card.style.setProperty("--card-x", "0deg");
+                    card.style.setProperty("--card-y", "0deg");
+                });
+            });
+
+            // Make the CTA hover glow follow the pointer.
+            document.querySelectorAll(".interactive-button").forEach((button) => {
+                button.addEventListener("pointermove", (event) => {
+                    const bounds = button.getBoundingClientRect();
+                    button.style.setProperty("--ripple-x", `${event.clientX - bounds.left}px`);
+                    button.style.setProperty("--ripple-y", `${event.clientY - bounds.top}px`);
+                });
+            });
+        }
     </script>
 </body>
 
