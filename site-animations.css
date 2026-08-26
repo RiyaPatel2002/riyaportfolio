@@ -184,6 +184,34 @@ body > .max-w-5xl > div.mt-10 img {
     border-radius: 21px;
 }
 
+.project-summary {
+    display: grid;
+    grid-template-columns: minmax(150px, 0.35fr) 1fr;
+    gap: 24px;
+    align-items: start;
+    margin: 8px 10px 0;
+    padding: 26px 4px 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-summary-label {
+    margin: 0;
+    color: #5eead4;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.project-summary-text {
+    max-width: 680px;
+    margin: 0;
+    color: rgba(229, 231, 235, 0.78);
+    font-size: 1.08rem;
+    line-height: 1.75;
+}
+
 body > .max-w-5xl > .grid {
     margin-top: 34px !important;
     padding-top: 30px;
@@ -209,6 +237,18 @@ body > .max-w-5xl > .grid > div {
 
     body > .max-w-5xl > .space-y-14 h1 {
         font-size: 2.35rem;
+    }
+
+    .project-summary {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin: 4px 4px 0;
+        padding-top: 22px;
+    }
+
+    .project-summary-text {
+        font-size: 1rem;
+        line-height: 1.65;
     }
 }
 
