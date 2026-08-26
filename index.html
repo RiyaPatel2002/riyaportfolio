@@ -149,17 +149,35 @@
         }
 
         @keyframes loader-float {
-            0%, 100% { transform: translateY(0) rotate(-3deg); }
-            50% { transform: translateY(-9px) rotate(3deg); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-3deg);
+            }
+
+            50% {
+                transform: translateY(-9px) rotate(3deg);
+            }
         }
 
         @keyframes loader-spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         @keyframes loader-pulse {
-            0%, 100% { transform: scale(0.9); opacity: 0.35; }
-            50% { transform: scale(1.08); opacity: 0.9; }
+
+            0%,
+            100% {
+                transform: scale(0.9);
+                opacity: 0.35;
+            }
+
+            50% {
+                transform: scale(1.08);
+                opacity: 0.9;
+            }
         }
 
         /* Fade-in animation */
@@ -263,27 +281,57 @@
         }
 
         @keyframes hero-glow {
-            from { opacity: 0.55; transform: translateX(-50%) scale(0.92); }
-            to { opacity: 1; transform: translateX(-50%) scale(1.08); }
+            from {
+                opacity: 0.55;
+                transform: translateX(-50%) scale(0.92);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(-50%) scale(1.08);
+            }
         }
 
         @keyframes bubble-float {
-            from { transform: translate3d(0, 20px, 0) scale(0.72); }
-            to { transform: translate3d(var(--bubble-drift), -32px, 0) scale(1.08); }
+            from {
+                transform: translate3d(0, 20px, 0) scale(0.72);
+            }
+
+            to {
+                transform: translate3d(var(--bubble-drift), -32px, 0) scale(1.08);
+            }
         }
 
         @keyframes cue-float {
-            0%, 100% { opacity: 0.5; transform: translate(-50%, 0); }
-            50% { opacity: 1; transform: translate(-50%, 7px); }
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: translate(-50%, 0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translate(-50%, 7px);
+            }
         }
 
         @keyframes name-shimmer {
-            to { background-position: 220% center; }
+            to {
+                background-position: 220% center;
+            }
         }
 
         @keyframes underline-grow {
-            from { width: 0; opacity: 0; }
-            to { width: 74px; opacity: 1; }
+            from {
+                width: 0;
+                opacity: 0;
+            }
+
+            to {
+                width: 74px;
+                opacity: 1;
+            }
         }
 
         .hero-section::after {
@@ -302,23 +350,34 @@
             transition: transform 0.18s ease-out;
         }
 
-        .hero-intro > * {
+        .hero-intro>* {
             opacity: 0;
             filter: blur(7px);
             transform: translateY(58px);
             transition: opacity 0.9s ease, filter 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        .hero-section.hero-ready .hero-intro > * {
+        .hero-section.hero-ready .hero-intro>* {
             opacity: 1;
             filter: blur(0);
             transform: translateY(0);
         }
 
-        .hero-section.hero-ready .hero-intro > *:nth-child(1) { transition-delay: 80ms; }
-        .hero-section.hero-ready .hero-intro > *:nth-child(2) { transition-delay: 220ms; }
-        .hero-section.hero-ready .hero-intro > *:nth-child(3) { transition-delay: 360ms; }
-        .hero-section.hero-ready .hero-intro > *:nth-child(4) { transition-delay: 500ms; }
+        .hero-section.hero-ready .hero-intro>*:nth-child(1) {
+            transition-delay: 80ms;
+        }
+
+        .hero-section.hero-ready .hero-intro>*:nth-child(2) {
+            transition-delay: 220ms;
+        }
+
+        .hero-section.hero-ready .hero-intro>*:nth-child(3) {
+            transition-delay: 360ms;
+        }
+
+        .hero-section.hero-ready .hero-intro>*:nth-child(4) {
+            transition-delay: 500ms;
+        }
 
         .hero-content h1 {
             position: relative;
@@ -341,12 +400,12 @@
             animation: underline-grow 0.9s ease 0.72s forwards;
         }
 
-        body > section:not(#home) h2 {
+        body>section:not(#home) h2 {
             position: relative;
             padding-bottom: 14px;
         }
 
-        body > section:not(#home) h2::after {
+        body>section:not(#home) h2::after {
             content: "";
             position: absolute;
             bottom: 0;
@@ -359,18 +418,18 @@
             transition: width 0.9s ease 0.25s;
         }
 
-        body > section:not(#home).visible h2::after {
+        body>section:not(#home).visible h2::after {
             width: 68px;
         }
 
-        .skills-grid > .fade-up > div:first-child > div:last-child {
+        .skills-grid>.fade-up>div:first-child>div:last-child {
             position: relative;
             overflow: visible;
             transform-style: preserve-3d;
             transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.45s ease, box-shadow 0.45s ease;
         }
 
-        .skills-grid > .fade-up > div:first-child > div:last-child::after {
+        .skills-grid>.fade-up>div:first-child>div:last-child::after {
             content: "";
             position: absolute;
             inset: -7px;
@@ -381,32 +440,46 @@
             transition: opacity 0.45s ease, transform 0.45s ease;
         }
 
-        .skills-grid > .fade-up > div:first-child > div:last-child i {
+        .skills-grid>.fade-up>div:first-child>div:last-child i {
             display: inline-block;
             color: #d1d5db;
             animation: skill-icon-breathe 3.2s ease-in-out infinite;
             transition: color 0.35s ease, transform 0.35s ease, filter 0.35s ease;
         }
 
-        .skills-grid > .fade-up:nth-child(2) > div:first-child > div:last-child i { animation-delay: -0.6s; }
-        .skills-grid > .fade-up:nth-child(3) > div:first-child > div:last-child i { animation-delay: -1.2s; }
-        .skills-grid > .fade-up:nth-child(4) > div:first-child > div:last-child i { animation-delay: -1.8s; }
-        .skills-grid > .fade-up:nth-child(5) > div:first-child > div:last-child i { animation-delay: -2.4s; }
-        .skills-grid > .fade-up:nth-child(6) > div:first-child > div:last-child i { animation-delay: -3s; }
+        .skills-grid>.fade-up:nth-child(2)>div:first-child>div:last-child i {
+            animation-delay: -0.6s;
+        }
 
-        .skills-grid > .fade-up:hover > div:first-child > div:last-child {
+        .skills-grid>.fade-up:nth-child(3)>div:first-child>div:last-child i {
+            animation-delay: -1.2s;
+        }
+
+        .skills-grid>.fade-up:nth-child(4)>div:first-child>div:last-child i {
+            animation-delay: -1.8s;
+        }
+
+        .skills-grid>.fade-up:nth-child(5)>div:first-child>div:last-child i {
+            animation-delay: -2.4s;
+        }
+
+        .skills-grid>.fade-up:nth-child(6)>div:first-child>div:last-child i {
+            animation-delay: -3s;
+        }
+
+        .skills-grid>.fade-up:hover>div:first-child>div:last-child {
             border-color: rgba(45, 212, 191, 0.65);
             box-shadow: 0 0 26px rgba(20, 184, 166, 0.22), inset 0 0 18px rgba(20, 184, 166, 0.12);
             transform: translateY(-8px) rotate(5deg) scale(1.08);
         }
 
-        .skills-grid > .fade-up:hover > div:first-child > div:last-child::after {
+        .skills-grid>.fade-up:hover>div:first-child>div:last-child::after {
             opacity: 1;
             transform: scale(1);
             animation: skill-ring-spin 1.8s linear infinite;
         }
 
-        .skills-grid > .fade-up:hover > div:first-child > div:last-child i {
+        .skills-grid>.fade-up:hover>div:first-child>div:last-child i {
             color: #5eead4;
             filter: drop-shadow(0 0 8px rgba(45, 212, 191, 0.75));
             animation-play-state: paused;
@@ -414,17 +487,31 @@
         }
 
         @keyframes skill-icon-breathe {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-4px) rotate(3deg); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-4px) rotate(3deg);
+            }
         }
 
         @keyframes skill-icon-spin {
-            from { transform: scale(1.16) rotate(0deg); }
-            to { transform: scale(1.16) rotate(360deg); }
+            from {
+                transform: scale(1.16) rotate(0deg);
+            }
+
+            to {
+                transform: scale(1.16) rotate(360deg);
+            }
         }
 
         @keyframes skill-ring-spin {
-            to { transform: scale(1) rotate(360deg); }
+            to {
+                transform: scale(1) rotate(360deg);
+            }
         }
 
         nav a,
@@ -465,7 +552,7 @@
         }
 
         .interactive-card img,
-        .interactive-card > div {
+        .interactive-card>div {
             transition: transform 0.35s ease;
         }
 
@@ -496,7 +583,7 @@
             height: 280px;
         }
 
-        .interactive-button > * {
+        .interactive-button>* {
             position: relative;
             z-index: 1;
         }
@@ -536,7 +623,7 @@
                 max-width: 360px;
             }
 
-            #home .hero-intro > button {
+            #home .hero-intro>button {
                 margin-top: 14px !important;
                 margin-bottom: 22px !important;
                 padding: 10px 16px;
@@ -555,12 +642,12 @@
                 line-height: 1.55;
             }
 
-            #home .hero-intro > div.mt-8 {
+            #home .hero-intro>div.mt-8 {
                 gap: 10px;
                 margin-top: 22px !important;
             }
 
-            #home .hero-intro > div.mt-8 a {
+            #home .hero-intro>div.mt-8 a {
                 padding: 10px 14px;
                 font-size: 12px;
             }
@@ -598,17 +685,34 @@
             html {
                 scroll-behavior: auto;
             }
-            *, *::before, *::after {
+
+            *,
+            *::before,
+            *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
-            .fade-up { opacity: 1; transform: none; }
-            .hero-content { transform: none; }
-            .hero-intro > * { opacity: 1; filter: none; transform: none; }
-            .hero-scroll-cue { display: none; }
-        }
 
+            .fade-up {
+                opacity: 1;
+                transform: none;
+            }
+
+            .hero-content {
+                transform: none;
+            }
+
+            .hero-intro>* {
+                opacity: 1;
+                filter: none;
+                transform: none;
+            }
+
+            .hero-scroll-cue {
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -708,8 +812,15 @@ transition-all duration-300">
                     class="interactive-button px-6 py-3 bg-teal-700 border border-teal-700 hover:text-teal-800 rounded-full font-semibold hover:bg-black transition">View
                     My Work</a>
                 <a href="#contact"
-                    class="interactive-button px-6 py-3 border border-teal-700 text-teal-700 rounded-full font-semibold hover:bg-teal-700 hover:text-white transition">Contact
-                    Me</a>
+                    class="interactive-button relative inline-block overflow-hidden px-6 py-3 border border-teal-700 text-teal-700 rounded-full font-semibold transition-colors duration-300 group">
+
+                    <span class="relative z-10 transition-colors duration-300 group-hover:text-white">
+                        Contact Me
+                    </span>
+
+                    <span
+                        class="absolute inset-y-0 left-0 w-0 bg-teal-700 transition-all duration-500 ease-out group-hover:w-full"></span>
+                </a>
             </div>
         </div>
     </section>
@@ -1010,7 +1121,8 @@ transition-all duration-300">
                         style="background-image: url('grid2.jpg');"></div>
                     <div class="relative flex items-center gap-3 z-10">
                         <div class="bg-[#121212]/70 p-3 rounded-xl border border-white/10">
-                            <img src="https://logo.svgcdn.com/logos/daisyui-icon.svg" alt="daisyUI logo" class="w-8 h-8" />
+                            <img src="https://logo.svgcdn.com/logos/daisyui-icon.svg" alt="daisyUI logo"
+                                class="w-8 h-8" />
                         </div>
                         <span class="text-xl font-medium text-white">DaisyUI</span>
                     </div>
