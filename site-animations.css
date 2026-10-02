@@ -6,19 +6,6 @@ body.site-motion-page {
     overflow-x: hidden;
 }
 
-.site-scroll-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 120;
-    width: 0;
-    height: 2px;
-    pointer-events: none;
-    background: linear-gradient(90deg, #0f766e, #5eead4, #ecfeff);
-    box-shadow: 0 0 14px rgba(45, 212, 191, 0.85);
-    transition: width 0.12s ease-out;
-}
-
 .site-reveal {
     opacity: 0;
     transform: translateY(36px);
@@ -250,6 +237,11 @@ body > .max-w-5xl > .grid > div {
 }
 
 @media (max-width: 640px) {
+    /* Keep the floating navbar at the same height on every page. */
+    header.mt-10 {
+        margin-top: 12px !important;
+    }
+
     body > .max-w-5xl {
         margin-top: 112px !important;
     }

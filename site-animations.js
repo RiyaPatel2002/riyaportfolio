@@ -7,14 +7,16 @@
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     document.body.classList.add("site-motion-page");
 
-    const progress = document.createElement("div");
-    progress.className = "site-scroll-progress";
-    progress.setAttribute("aria-hidden", "true");
-    document.body.appendChild(progress);
+    // Pages such as Works already reveal their cards individually. Hiding the
+    // whole, very tall section as well prevents it from ever reaching the
+    // observer threshold, leaving the page blank on the initial viewport.
+    const sectionRevealCandidates = [
+        ...document.querySelectorAll("main > *, body > section, body > footer, body > .max-w-5xl, body > .relative.fade-up")
+    ].filter((element) => !element.querySelector(".fade-up"));
 
     const revealCandidates = [
         ...document.querySelectorAll(".fade-up"),
-        ...document.querySelectorAll("main > *, body > section, body > footer, body > .max-w-5xl, body > .relative.fade-up")
+        ...sectionRevealCandidates
     ];
     const revealElements = [...new Set(revealCandidates)];
 
@@ -59,13 +61,6 @@
         if (reducedMotion) heading.classList.add("site-visible");
         else observer.observe(heading);
     });
-
-    const updateProgress = () => {
-        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-        progress.style.width = `${scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0}%`;
-    };
-    window.addEventListener("scroll", updateProgress, { passive: true });
-    updateProgress();
 
     if (!reducedMotion) {
         document.querySelectorAll(".site-card").forEach((card) => {
