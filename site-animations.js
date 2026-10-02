@@ -11,7 +11,7 @@
     // whole, very tall section as well prevents it from ever reaching the
     // observer threshold, leaving the page blank on the initial viewport.
     const sectionRevealCandidates = [
-        ...document.querySelectorAll("main > *, body > section, body > footer, body > .max-w-5xl, body > .relative.fade-up")
+        ...document.querySelectorAll("main > *, body > section, body > footer, body > .relative.fade-up")
     ].filter((element) => !element.querySelector(".fade-up"));
 
     const revealCandidates = [
@@ -26,6 +26,11 @@
     });
 
     document.querySelectorAll(".grid").forEach((grid) => {
+        // Project detail info boxes sit below the hero summary. Keep them
+        // available immediately instead of hiding them until a scroll-based
+        // reveal observer can see the individual cards.
+        if (grid.matches("body > .max-w-5xl > .grid")) return;
+
         Array.from(grid.children).forEach((card, index) => {
             card.classList.add("site-reveal", "site-card");
             card.style.setProperty("--site-reveal-delay", `${index * 100}ms`);

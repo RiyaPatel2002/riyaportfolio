@@ -224,12 +224,18 @@ body > .max-w-5xl > div.mt-10 img {
 }
 
 body > .max-w-5xl > .grid {
+    display: grid;
+    visibility: visible !important;
+    opacity: 1 !important;
     margin-top: 34px !important;
     padding-top: 30px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 body > .max-w-5xl > .grid > div {
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
     padding: 20px;
     border: 1px solid rgba(255, 255, 255, 0.09);
     border-radius: 18px;
